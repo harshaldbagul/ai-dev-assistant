@@ -15,6 +15,11 @@ export async function executeToolCall(
       const sort = (args.sort as 'stars' | 'updated' | 'pushed') ?? 'stars';
       return githubService.getRepos(username, sort);
     }
+    case 'search_github_repos': {
+      const query = args.query as string;
+      const limit = (args.limit as number) ?? 5;
+      return githubService.searchRepos(query, limit);
+    }
     default:
       throw new AppError(`Unknown tool: ${name}`, 400);
   }

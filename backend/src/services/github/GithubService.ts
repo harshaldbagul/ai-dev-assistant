@@ -62,6 +62,23 @@ class GithubService {
     };
   }
 
+  async searchRepos(query: string, limit: number = 5): Promise<GitHubRepo[]> {
+    const clampedLimit = Math.min(Math.max(1, limit), 10);
+    const data = await this.fetch<{ items: RawGitHubRepo[] }>(
+      `/search/repositories?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=${clampedLimit}`,
+    );
+
+    return data.items.map((repo) => ({
+      name: repo.name,
+      description: repo.description,
+      stargazers_count: repo.stargazers_count,
+      language: repo.language,
+      html_url: repo.html_url,
+      forks_count: repo.forks_count,
+      topics: repo.topics ?? [],
+    }));
+  }
+
   async getRepos(
     username: string,
     sort: 'stars' | 'updated' | 'pushed' = 'stars',

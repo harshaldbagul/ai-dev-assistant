@@ -38,6 +38,26 @@ export const toolDefinitions: Tool[] = [
           required: ['username'],
         },
       },
+      {
+        name: 'search_github_repos',
+        description:
+          'Searches GitHub repositories globally by keyword, topic, or language. Use this for questions like "highest rated repos", "most starred JavaScript repos", "top machine learning repos", etc. Returns name, star count, language, description, and URL.',
+        parameters: {
+          type: SchemaType.OBJECT,
+          properties: {
+            query: {
+              type: SchemaType.STRING,
+              description:
+                'Search query. Examples: "stars:>10000", "topic:machine-learning", "language:rust stars:>5000", "web framework". For top/highest rated repos with no filter, use "stars:>1".',
+            },
+            limit: {
+              type: SchemaType.NUMBER,
+              description: 'Number of results to return (1–10). Defaults to 5.',
+            },
+          },
+          required: ['query'],
+        },
+      },
     ],
   },
 ];
