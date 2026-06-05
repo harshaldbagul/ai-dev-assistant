@@ -100,7 +100,6 @@ class GeminiService implements AIService {
             .map((p) => (p as { text: string }).text)
             .join('');
           if (text) {
-            logger.info({ name: 'harshal:onEvent', text });
             onEvent({ type: 'text', content: text });
           }
         }

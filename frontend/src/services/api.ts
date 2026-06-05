@@ -55,7 +55,6 @@ export function streamChat(
 
         buffer += decoder.decode(value, { stream: true });
         const lines = buffer.split('\n');
-        console.log('harshal:buffer',buffer, lines)
         buffer = lines.pop() ?? '';
 
         for (const line of lines) {
