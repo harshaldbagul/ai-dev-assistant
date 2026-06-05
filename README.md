@@ -1,6 +1,8 @@
-# AI Dev Assistant — GitHub Analyzer
+# AI Dev Assistant — GitHub Analyzer 
 
 A project exploring AI concepts progressively: chat → streaming → tool calling → RAG → agents.
+
+Hosted at: https://ai-dev-assistant-tau.vercel.app/
 
 **Phase 1**: Chat interface where you ask about any GitHub user. Gemini AI uses tool calling to fetch real GitHub data, then streams the response back word by word.
 
